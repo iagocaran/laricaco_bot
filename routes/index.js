@@ -28,7 +28,7 @@ module.exports = (app) => {
 			let match = message.text.match(/\/.+?[@\s]|\/.+\b/)[0];
 			switch (match.substr(1, match.length).replace(/@/, '')) {
 				case "precos":
-					await data = database.getData();
+					data = await database.getData();
 					console.log(data);
 					msg = "precos";
 					break;
