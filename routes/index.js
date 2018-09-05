@@ -17,7 +17,6 @@ module.exports = (app) => {
 			if (!isFinite(parseFloat(splitLine[0]))) throw new Error('Valor inválido para o preço de ' + splitLine[1] + '.');
 			data.push({ product: splitLine[1], price: parseFloat(splitLine[0]) });
 		});
-		console.log(data);
 		database.setData(data);
 	}
 
@@ -30,12 +29,13 @@ module.exports = (app) => {
 				case "precos":
 					let data = await database.getData();
 					msg = '';
+					console.log(data.updatedAt);
 					data.content.forEach((line) => {
-						msg += line.product + ' - ' + line.price + '\n';
+						msg += 'R$ ' + line.price.toFixed(2) + ' - ' + line.product + '\n';
 					});
 					break;
 				case "atualizar":
-					msg = "Não entendi.\nUse /atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
+					msg = "Use /atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
 					let begin;
 					if (begin = message.text.indexOf('\n') !== -1) {
 						try {
