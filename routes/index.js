@@ -11,12 +11,13 @@ module.exports = (app) => {
 	router.post('/', (req, res, next) => {
 		let message = req.body.message;
 		let msg = null;
+		console.log(message.text);
 		switch (message.text) {
 			case 'Berto':
 				msg = 'Loto';
 				break;
-			case '\\price':
-			case '\\price@laricaco_bot':
+			case '\\precos':
+			case '\\precos@laricaco_bot':
 				msg = 'Preço';
 				break;
 			default:
