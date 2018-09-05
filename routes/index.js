@@ -21,7 +21,7 @@ module.exports = (app) => {
 				reply_to_message_id: msg.message_id
 			})
 				.then((res) => {
-					console.log(res);
+					// console.log(res);
 				})
 				.catch((err) => {
 					throw err;
