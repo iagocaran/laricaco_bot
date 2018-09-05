@@ -13,7 +13,6 @@ module.exports = (app) => {
 	router.post('/', (req, res, next) => {
 		try {
 			let msg = req.body.message;
-			console.log(message.text);
 			axios.post(api + '/sendMessage', {
 				chat_id: msg.chat.id,
 				text: 'Hoje tem IFCH?',
