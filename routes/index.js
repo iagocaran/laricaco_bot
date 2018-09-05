@@ -1,9 +1,7 @@
 module.exports = (app) => {
 	const router = app.get('express').Router();
-	const axios = app.get('axios');
-	const api = 'https://api.telegram.org/bot' + app.get('telegramToken');
+	const TelegramService = app.get('TelegramService');
 // const database = app.get('database');
-
 
 	/* GET home page. */
 	router.get('/', function(req, res, next) {
@@ -11,23 +9,25 @@ module.exports = (app) => {
 	});
 
 	router.post('/', (req, res, next) => {
-		try {
-			let msg = req.body.message;
-			axios.post(api + '/sendMessage', {
-				chat_id: msg.chat.id,
-				text: 'Hoje tem IFCH?',
-				parse_mode: 'HTML',
-				disable_notification: true,
-				reply_to_message_id: msg.message_id
-			})
-				.then((res) => {
-					// console.log(res);
-				})
+		let message = req.body.message;
+		let msg = null;
+		switch (message) {
+			case 'Berto':
+				msg = 'Loto';
+				break;
+			case '\\price':
+			case '\\price@laricaco_bot':
+				msg = 'Preço';
+				break;
+			default:
+				break;
+		}
+		if (msg) {
+			TelegramService.sendMessage(message.chat.id, msg, message.message_id, true)
+				.then(() => {})
 				.catch((err) => {
-					throw err;
+					console.log(err);
 				});
-		} catch (err) {
-			console.log(err);
 		}
 		res.status(200).send('OK');
 	});

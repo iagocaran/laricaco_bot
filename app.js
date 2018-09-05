@@ -4,7 +4,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const axios = require('axios');
 
-// const database = require('database.js');
+const database = require('database.js');
+const TelegramService = require('TelegramService')(app);
 
 const indexRouter = require('./routes/index');
 
@@ -18,7 +19,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('express', express);
 app.set('axios', axios);
-// app.set('database', database);
+app.set('database', database);
+app.set('TelegramService', TelegramService);
 app.set('telegramToken', process.env.TELEGRAM_TOKEN);
 
 app.use('/', indexRouter(app));
