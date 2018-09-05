@@ -31,7 +31,7 @@ module.exports = (app) => {
 					let data = await database.getData();
 					msg = '';
 					data.content.forEach((line) => {
-						msg += line.product + ' - ' + line.price;
+						msg += line.product + ' - ' + line.price + '\n';
 					});
 					break;
 				case "atualizar":
