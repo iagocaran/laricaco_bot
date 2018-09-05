@@ -15,10 +15,7 @@ module.exports = (app) => {
 		list.forEach((line) => {
 			let splitLine = line.split(' - ');
 			console.log(splitLine);
-			if (parseFloat(splitLine[0])) {
-				console.log(err);
-				throw new Error('Valor inválido para o preço de ' + splitLine[1] + '.');
-			}
+			if (!isFinite(parseFloat(splitLine[0]))) throw new Error('Valor inválido para o preço de ' + splitLine[1] + '.');
 			data.push({ product: splitLine[1], price: parseFloat(splitLine[0]) });
 		});
 		console.log(data);
