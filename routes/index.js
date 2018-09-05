@@ -25,7 +25,8 @@ module.exports = (app) => {
 				})
 				.catch((err) => {
 					throw err;
-				})
+				});
+			req.send('Thanks')
 		} catch (err) {
 			console.log(err);
 		}
