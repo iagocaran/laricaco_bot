@@ -10,6 +10,7 @@ module.exports = (app) => {
 
 	function parseList (list) {
 		list = list.split('\n');
+		list = list.slice(1, list.length);
 		let data = [];
 		list.forEach((line) => {
 			let splitLine = line.split(' - ');
