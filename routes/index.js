@@ -12,7 +12,8 @@ module.exports = (app) => {
 		list = list.split('\n');
 		let data = [];
 		list.forEach((line) => {
-			let splitLine = line.split(' - ')
+			let splitLine = line.split(' - ');
+			console.log(splitLine);
 			if (parseInt(splitLine[0])) throw new Error('Valor inválido para o preço de ' + splitLine[1] + '.');
 			data.push({ product: splitLine[1], price: parseFloat(splitLine[0]) });
 		});
@@ -37,7 +38,7 @@ module.exports = (app) => {
 							parseList(message.text.substr(begin + 1, message.text.length));
 							msg = 'Preços atualizados com sucesso!';
 						} catch (err) {
-							console.log(err);
+							msg = err.message;
 						}
 					}
 					break;
