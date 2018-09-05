@@ -1,7 +1,7 @@
 module.exports = (app) => {
 	const router = app.get('express').Router();
 	const axios = app.get('axios');
-	const api = 'https://api.telegram.org/' + app.get('telegramToken');
+	const api = 'https://api.telegram.org/bot' + app.get('telegramToken');
 // const database = app.get('database');
 
 
