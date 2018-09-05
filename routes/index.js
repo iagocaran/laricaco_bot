@@ -9,8 +9,14 @@ module.exports = (app) => {
 	});
 
 	function parseList (list) {
-		// list = list.split('\n')
-		console.log(list);
+		list = list.split('\n');
+		let data = [];
+		list.forEach((line) => {
+			let splitLine = line.split(' - ')
+			if (parseInt(splitLine[0])) throw new Error('Valor inválido para o preço de ' + splitLine[1] + '.');
+			data.push({ product: splitLine[1], price: parseFloat(splitLine[0]) });
+		});
+		console.log(data);
 	}
 
 	router.post('/', (req, res, next) => {
@@ -18,7 +24,6 @@ module.exports = (app) => {
 		let msg = 'Recebi';
 		if (message.text.startsWith('/')) {
 			let match = message.text.match(/\/.+?[@\s]|\/.+\b/)[0];
-			console.log(match.substr(1, match.length).replace(/@laricaco_bot/, ''));
 			switch (match.substr(1, match.length).replace(/@/, '')) {
 				case "precos":
 					msg = "precos";
