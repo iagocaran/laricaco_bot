@@ -25,7 +25,7 @@ function getData() {
 }
 
 function setData(data) {
-	return Data.update({ content: data })
+	return Data.update({ content: data }, { where: { id: 1 } })
 		.then(() => {
 
 		})

@@ -21,19 +21,20 @@ module.exports = (app) => {
 		database.setData(data);
 	}
 
-	router.post('/', (req, res, next) => {
+	router.post('/', async (req, res, next)  => {
 		let message = req.body.message;
 		let msg = 'Recebi';
 		if (message.text.startsWith('/')) {
 			let match = message.text.match(/\/.+?[@\s]|\/.+\b/)[0];
 			switch (match.substr(1, match.length).replace(/@/, '')) {
 				case "precos":
+					await data = database.getData();
+					console.log(data);
 					msg = "precos";
 					break;
 				case "atualizar":
 					msg = "Não entendi.\nUse /atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
 					let begin;
-					console.log(message.text);
 					if (begin = message.text.indexOf('\n') !== -1) {
 						try {
 							parseList(message.text.substr(begin + 1, message.text.length));
