@@ -18,8 +18,7 @@ module.exports = (app) => {
 		let msg = 'Recebi';
 		if (message.text.startsWith('/')) {
 			let match = message.text.match(/\/.+?[@\s]|\/.+\b/)[0];
-			console.log(match);
-			switch (match.substr(1, match.length - 2)) {
+			switch (match.substr(0, match.length).replace(/@laricaco_bot/, '')) {
 				case "precos":
 					msg = "precos";
 					break;
