@@ -16,6 +16,7 @@ module.exports = (app) => {
 	router.post('/', (req, res, next) => {
 		let message = req.body.message;
 		let msg = 'Recebi';
+		console.log(message.text[0]);
 		if (message.text[0] === '\\') {
 			switch (message.text.match(/\\.+?(?=[@|\s])/)) {
 				case "\\precos":
