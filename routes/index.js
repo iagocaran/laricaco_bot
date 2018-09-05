@@ -11,7 +11,7 @@ module.exports = (app) => {
 	router.post('/', (req, res, next) => {
 		let message = req.body.message;
 		let msg = null;
-		switch (message) {
+		switch (message.text) {
 			case 'Berto':
 				msg = 'Loto';
 				break;
