@@ -16,9 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('express', express);
 app.set('axios', axios);
-app.set('database', require('./services/database.js'));
-app.set('TelegramService', require('./services/TelegramService.js')(app));
+// app.set('database', require('./services/database.js'));
 app.set('telegramToken', process.env.TELEGRAM_TOKEN);
+app.set('TelegramService', require('./services/TelegramService.js')(app));
 
 app.use('/', indexRouter(app));
 
