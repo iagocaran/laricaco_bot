@@ -17,8 +17,7 @@ module.exports = (app) => {
 		let message = req.body.message;
 		let msg = 'Recebi';
 		if (message.text[0] === '\\') {
-			console.log(message.text.match(/\\.+?(?=[@|\s])/));
-			switch (message.text.match(/\\.+?(?=[@|\s])/)) {
+			switch (message.text.match(/\\.+?[@\s]|\\.+\b/)) {
 				case "\\precos":
 					msg = "precos";
 					break;
