@@ -19,7 +19,13 @@ module.exports = (app) => {
 				parse_mode: 'HTML',
 				disable_notification: true,
 				reply_to_message_id: msg.message_id
-			});
+			})
+				.then((res) => {
+					console.log(res);
+				})
+				.catch((err) => {
+					throw err;
+				})
 		} catch (err) {
 			console.log(err);
 		}
