@@ -24,6 +24,7 @@ module.exports = (app) => {
 				case "/atualizar":
 					msg = "Não entendi.\nUse /atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
 					let begin;
+					console.log(message.text);
 					if (begin = message.text.indexOf('\n') === -1) {
 						try {
 							parseList(message.text.substr(begin + 1, message.text.length));
