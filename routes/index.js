@@ -17,7 +17,7 @@ module.exports = (app) => {
 		let message = req.body.message;
 		let msg = 'Recebi';
 		if (message.text.startsWith('/')) {
-			switch (message.text.search(/\/.+?[@\s]|\/.+\b/)[0]) {
+			switch (message.text.match(/\/.+?[@\s]|\/.+\b/)[0]) {
 				case "/precos":
 					msg = "precos";
 					break;
