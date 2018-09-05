@@ -26,10 +26,10 @@ module.exports = (app) => {
 				.catch((err) => {
 					throw err;
 				});
-			req.status(200).send('Thanks');
 		} catch (err) {
 			console.log(err);
 		}
+		res.status(200).send('OK');
 	});
 
 	return router;
