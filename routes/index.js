@@ -29,7 +29,10 @@ module.exports = (app) => {
 			switch (match.substr(1, match.length).replace(/@/, '')) {
 				case "precos":
 					let data = await database.getData();
-					msg = JSON.stringify(data);
+					msg = '';
+					data.content.forEach((line) => {
+						msg += line.product + ' - ' + line.price;
+					});
 					break;
 				case "atualizar":
 					msg = "Não entendi.\nUse /atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
