@@ -14,12 +14,11 @@ module.exports = (app) => {
 		let data = [];
 		list.forEach((line) => {
 			let splitLine = line.split(' - ');
-			console.log(splitLine);
 			if (!isFinite(parseFloat(splitLine[0]))) throw new Error('Valor inválido para o preço de ' + splitLine[1] + '.');
 			data.push({ product: splitLine[1], price: parseFloat(splitLine[0]) });
-			database.setData(data);
 		});
 		console.log(data);
+		database.setData(data);
 	}
 
 	router.post('/', (req, res, next) => {
