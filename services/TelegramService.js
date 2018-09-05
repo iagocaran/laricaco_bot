@@ -3,7 +3,7 @@ module.exports = (app) => {
 	const api = 'https://api.telegram.org/bot' + app.get('telegramToken');
 
 	function sendMessage (chat_id, text, reply_to_message_id, disable_notification, parse_mode) {
-		console.log()
+		console.log();
 		return axios.post(api + '/sendMessage', {
 			chat_id,
 			text: text || '',

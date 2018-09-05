@@ -3,18 +3,35 @@ DataTypes = Sequelize.DataTypes;
 
 const sequelize = new Sequelize(process.env.DATABASE_URL);
 
-const model = {
-	Data: sequelize.define('data', {
-		content: DataTypes.JSON
-	})
-};
+const Data = sequelize.define('data', {
+	content: DataTypes.JSON
+});
 
 sequelize.sync()
-	.then((msg) => {
-		// console.log(msg);
+	.then(() => {
+		Data.findOne()
+			.then((data) => {
+				if (!data) {
+					return Data.create({ content: [] })
+				}
+			})
 	});
 
+function getData() {
+	return Data.findOne()
+		.then((data) => {
+			return data;
+		})
+}
+
+function setData(data) {
+	return Data.update({ content: data })
+		.then(() => {
+
+		})
+}
+
 module.exports = {
-	sequelize,
-	model
+	getData,
+	setData
 };

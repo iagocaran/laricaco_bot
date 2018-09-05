@@ -17,6 +17,7 @@ module.exports = (app) => {
 			console.log(splitLine);
 			if (!isFinite(parseFloat(splitLine[0]))) throw new Error('Valor inválido para o preço de ' + splitLine[1] + '.');
 			data.push({ product: splitLine[1], price: parseFloat(splitLine[0]) });
+			database.setData(data);
 		});
 		console.log(data);
 	}
