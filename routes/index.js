@@ -26,7 +26,7 @@ module.exports = (app) => {
 				.catch((err) => {
 					throw err;
 				});
-			req.send('Thanks')
+			req.status(200).send('Thanks');
 		} catch (err) {
 			console.log(err);
 		}
