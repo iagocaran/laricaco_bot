@@ -17,11 +17,12 @@ module.exports = (app) => {
 		let message = req.body.message;
 		let msg = 'Recebi';
 		if (message.text.startsWith('/')) {
-			switch (message.text.match(/\/.+?[@\s]|\/.+\b/)[0]) {
-				case "/precos":
+			let match = message.text.match(/\/.+?[@\s]|\/.+\b/)[0];
+			switch (match.substr(1, match.length - 1)) {
+				case "precos":
 					msg = "precos";
 					break;
-				case "/atualizar":
+				case "atualizar":
 					msg = "Não entendi.\nUse /atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
 					let begin;
 					console.log(message.text);
