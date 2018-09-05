@@ -16,14 +16,13 @@ module.exports = (app) => {
 	router.post('/', (req, res, next) => {
 		let message = req.body.message;
 		let msg = 'Recebi';
-		if (message.text[0] === '\\') {
-			console.log(message.text.match(/\\.+?[@\s]|\\.+\b/));
-			switch (message.text.match(/\\.+?[@\s]|\\.+\b/)) {
-				case "\\precos":
+		if (message.text.startsWith('/')) {
+			switch (message.text.search(/\/.+?[@\s]|\/.+\b/)[0]) {
+				case "/precos":
 					msg = "precos";
 					break;
-				case "\\atualizar":
-					msg = "Não entendi.\nUse \\atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
+				case "/atualizar":
+					msg = "Não entendi.\nUse /atualizar@laricaco_bot \npreco1 - produto1\npreco2 - produto2";
 					let begin;
 					if (begin = message.text.indexOf('\n') === -1) {
 						try {
