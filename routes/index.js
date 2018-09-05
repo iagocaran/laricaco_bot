@@ -39,6 +39,7 @@ module.exports = (app) => {
 							parseList(message.text.substr(begin + 1, message.text.length));
 							msg = 'Preços atualizados com sucesso!';
 						} catch (err) {
+							console.log(err);
 							msg = err.message;
 						}
 					}
