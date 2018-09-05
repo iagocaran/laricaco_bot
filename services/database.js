@@ -11,7 +11,7 @@ const model = {
 
 sequelize.sync()
 	.then((msg) => {
-		console.log(msg);
+		// console.log(msg);
 	});
 
 module.exports = {

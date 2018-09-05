@@ -15,7 +15,7 @@ module.exports = (app) => {
 
 	router.post('/', (req, res, next) => {
 		let message = req.body.message;
-		let msg = null;
+		let msg = 'Recebi';
 		if (message.text[0] === '\\') {
 			switch (message.text.match(/\\.+?(?=[@|\s])/)) {
 				case "\\precos":
@@ -37,7 +37,7 @@ module.exports = (app) => {
 		} else {
 			// TODO: Processar como um texto
 			let text = message.text;
-			if (text.split(' ').find('Berto')) {
+			if (text.split(' ').includes('Berto')) {
 				msg = "Loto";
 			}
 		}
