@@ -29,7 +29,7 @@ module.exports = (app) => {
 				case "precos":
 					let data = await database.getData();
 					msg = '';
-					console.log(data.updatedAt);
+					console.log(data);
 					data.content.forEach((line) => {
 						msg += 'R$ ' + line.price.toFixed(2) + ' - ' + line.product + '\n';
 					});
