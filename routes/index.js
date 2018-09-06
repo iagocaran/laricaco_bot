@@ -23,6 +23,12 @@ module.exports = (app) => {
 	router.post('/', async (req, res, next)  => {
 		let message = req.body.message;
 		let msg = 'Recebi';
+
+		if (!message.text) {
+			res.send(200);
+			return;
+		}
+
 		if (message.text.startsWith('/')) {
 			let match = message.text.match(/\/.+?[@\s]|\/.+\b/)[0];
 			switch (match.substr(1, match.length).replace(/@/, '')) {
